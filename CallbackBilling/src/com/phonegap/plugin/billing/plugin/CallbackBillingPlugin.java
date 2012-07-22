@@ -4,10 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.util.Log;
-import android.webkit.WebSettings.PluginState;
 
-import com.phonegap.api.Plugin;
-import com.phonegap.api.PluginResult;
+import  org.apache.cordova.api.Plugin;
+import  org.apache.cordova.api.PluginResult;
 import com.phonegap.plugin.billing.CallbackBillingActivity;
 
 public class CallbackBillingPlugin extends Plugin {

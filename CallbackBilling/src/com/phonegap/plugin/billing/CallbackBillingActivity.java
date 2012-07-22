@@ -1,7 +1,6 @@
 package com.phonegap.plugin.billing;
 
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 import org.json.JSONArray;
@@ -16,8 +15,8 @@ import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 
-import com.phonegap.DroidGap;
-import com.phonegap.api.PluginResult;
+import org.apache.cordova.DroidGap;
+import org.apache.cordova.api.PluginResult;
 import com.phonegap.plugin.billing.plugin.BillingService;
 import com.phonegap.plugin.billing.plugin.CallbackBillingPlugin;
 import com.phonegap.plugin.billing.plugin.Consts;
@@ -73,7 +72,7 @@ public class CallbackBillingActivity extends DroidGap {
      * purchased multiple times (such as poker chips). It is up to the
      * application to keep track of UNMANAGED products for the user.
      */
-    private enum Managed { MANAGED, UNMANAGED }
+//    private enum Managed { MANAGED, UNMANAGED } // Unused
 
     /**
      * A {@link PurchaseObserver} is used to get callbacks when Android Market sends
@@ -208,7 +207,7 @@ public class CallbackBillingActivity extends DroidGap {
         }
     }
 
-    private String mItemName;
+//    private String mItemName; // Unused commented out
     private String mSku;
     //private CatalogAdapter mCatalogAdapter;
 	// End of Variable for Billing
@@ -307,15 +306,15 @@ public class CallbackBillingActivity extends DroidGap {
      * @param str the string to replace the language/country within
      * @return a string containing the local language and region codes
      */
-    private String replaceLanguageAndRegion(String str) {
-        // Substitute language and or region if present in string
-        if (str.contains("%lang%") || str.contains("%region%")) {
-            Locale locale = Locale.getDefault();
-            str = str.replace("%lang%", locale.getLanguage().toLowerCase());
-            str = str.replace("%region%", locale.getCountry().toLowerCase());
-        }
-        return str;
-    }
+//    private String replaceLanguageAndRegion(String str) {
+//        // Substitute language and or region if present in string
+//        if (str.contains("%lang%") || str.contains("%region%")) {
+//            Locale locale = Locale.getDefault();
+//            str = str.replace("%lang%", locale.getLanguage().toLowerCase());
+//            str = str.replace("%region%", locale.getCountry().toLowerCase());
+//        }
+//        return str;
+//    }
 
     private void setupWidgets() {
 //        mLogTextView = (TextView) findViewById(R.id.log);
