@@ -1,5 +1,9 @@
 package com.phonegap.plugin.billing;
 
+import android.os.Bundle;
+import org.apache.cordova.*;
+
+/* Billing -imports- Additions */
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,13 +13,11 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 
-import org.apache.cordova.DroidGap;
 import org.apache.cordova.api.PluginResult;
 import com.phonegap.plugin.billing.plugin.BillingService;
 import com.phonegap.plugin.billing.plugin.CallbackBillingPlugin;
@@ -27,8 +29,11 @@ import com.phonegap.plugin.billing.plugin.BillingService.RequestPurchase;
 import com.phonegap.plugin.billing.plugin.BillingService.RestoreTransactions;
 import com.phonegap.plugin.billing.plugin.Consts.PurchaseState;
 import com.phonegap.plugin.billing.plugin.Consts.ResponseCode;
+/* End Billing -imports- Additions */
 
 public class CallbackBillingActivity extends DroidGap {
+	
+/* Billing -main Activity- Additions */ 
 	public static final String TAG = "CallbackBillingActivity";
 	
 	public static CallbackBillingActivity eInstance = null;
@@ -211,29 +216,6 @@ public class CallbackBillingActivity extends DroidGap {
     private String mSku;
     //private CatalogAdapter mCatalogAdapter;
 	// End of Variable for Billing
-    
-	/** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        eInstance = this;
-        
-        mHandler = new Handler();
-        mCallbackPurchaseObserver = new CallbackPurchaseObserver(mHandler);
-        mBillingService = new BillingService();
-        mBillingService.setContext(this);
-
-        mPurchaseDatabase = new PurchaseDatabase(this);
-        setupWidgets();
-
-        // Check if billing is supported.
-        ResponseHandler.register(mCallbackPurchaseObserver);
-        if (!mBillingService.checkBillingSupported()) {
-            showDialog(DIALOG_CANNOT_CONNECT_ID);
-        }
-        
-        super.loadUrl("file:///android_asset/www/index.html");
-    }
     
     /**
      * Called when this activity becomes visible.
@@ -628,5 +610,32 @@ public class CallbackBillingActivity extends DroidGap {
 			"})();");*/
 		//this.loadUrl("javascript:(function() { "+event+"('"+ JSONstring.toString() +"');})()");
 		//this.loadUrl("javascript:"+event+"("+ JSONstring.toString() +")");
-	}    
+	}
+/* End Billing -main Activity- Additions */
+	
+	/** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+/* Billing -onCreate- Additions */         
+        eInstance = this;
+        
+        mHandler = new Handler();
+        mCallbackPurchaseObserver = new CallbackPurchaseObserver(mHandler);
+        mBillingService = new BillingService();
+        mBillingService.setContext(this);
+
+        mPurchaseDatabase = new PurchaseDatabase(this);
+        setupWidgets();
+
+        // Check if billing is supported.
+        ResponseHandler.register(mCallbackPurchaseObserver);
+        if (!mBillingService.checkBillingSupported()) {
+            showDialog(DIALOG_CANNOT_CONNECT_ID);
+        }
+/* End Billing -onCreate- Additions */
+        
+        super.loadUrl("file:///android_asset/www/index.html");
+    }
 }
