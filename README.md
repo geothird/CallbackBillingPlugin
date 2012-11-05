@@ -40,12 +40,12 @@ Installation
 
 -   Add plugin_billing.js to assets/www from the repo and include it from your index.html:
 
-    <script type="text/javascript" src="plugin_billing.js"></script>
+        <code><script type="text/javascript" src="plugin_billing.js"></script></code>
     
 
 -   Add the following to res/xml/config.xml (or plugins.xml):
 
-    <plugin name="CallbackBillingPlugin" value="com.phonegap.plugin.billing.plugin.CallbackBillingPlugin"/>
+        <code><plugin name="CallbackBillingPlugin" value="com.phonegap.plugin.billing.plugin.CallbackBillingPlugin"/></code>
 
 
 Usage
